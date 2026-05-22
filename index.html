@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>QBay 掲示板 質問 回答 投稿 分析 Q&A</title>
+
+  <!-- PWA 必須 -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#1a73e8">
+
+  <meta name="description" content="QBayは誰でも質問を投稿し、自由に回答できる掲示板型Q&Aサイトです。日常の疑問から専門的な話題まで、気軽に情報交換できます。">
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <style>
+    body {
+      background-color: #ffe0b6;
+      font-family: sans-serif;
+      padding: 2em;
+    }
+
+    h1 img {
+      width: 10%;
+      height: auto;
+    }
+
+    button {
+      width: 10em;
+      height: 3em;
+      font-size: 150%;
+      margin: 1em 0;
+      cursor: pointer;
+    }
+
+    #dev-box {
+      margin-top: 2em;
+    }
+
+    #dev-box input[type="password"] {
+      font-size: 1em;
+      padding: 0.5em;
+      width: 160px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>
+    <a href="index.html"><img src="assets/images/title.png" alt="title"></a>
+  </h1>
+
+  <button onclick="location.href='index/test2.php'">投稿</button><br>
+  <button onclick="location.href='index/test3.html'">回答</button><br>
+  <button onclick="location.href='index/view.html'">閲覧</button><br>
+
+  <footer class="container" aria-label="フッター">
+    <nav aria-label="補助ナビゲーション">
+      <a href="index/OTH/terms.html">利用規約</a> ／
+      <a href="index/OTH/inquiry.html">お問い合わせ</a> ／
+      <a href="index/OTH/report.html">通報フォーム</a>
+    </nav>
+    <p>© QBay</p>
+  </footer>
+
+  <!-- PWA Service Worker 登録（完全版） -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .catch(err => console.log('SW registration failed:', err));
+    }
+  </script>
+
+</body>
+</html>
+
