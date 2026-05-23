@@ -1,19 +1,19 @@
 {
   "name": "QBay",
   "short_name": "QBay",
-  "start_url": "/qbay/",
-  "scope": "/qbay/",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#1a73e8",
   "icons": [
     {
-      "src": "https://wakameshougun.github.io/qbay/icons/icon-192.png",
+      "src": "/icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "https://wakameshougun.github.io/qbay/icons/icon-512.png",
+      "src": "/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
