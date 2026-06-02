@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>QBay 回答一覧</title>
+  <link rel="stylesheet" href="../assets/css/style2.css">
+  <style>
+    #post-table tbody tr:hover {
+      background-color: #ffd8aa;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>
+    <div class="header-area">
+      <a href="../index.html">
+        <img src="../assets/images/title.png" alt="title" class="qbay-logo">
+      </a>
+    </div>
+  </h1>
+
+  <p class="large-text">閲覧</p>
+
+  <div class="search-area">
+    <label>検索: <input type="text" id="search-input"></label>
+    <label>カテゴリ:
+      <select id="category-select">
+        <option value="">すべて</option>
+      </select>
+    </label>
+  </div>
+
+  <table id="post-table">
+    <thead>
+      <tr>
+        <th>内容</th>
+        <th>名前</th>
+        <th>カテゴリ</th>
+        <th>回答方式</th>
+        <th>回答数</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script src="../scripts/vmain.js"></script>
+</body>
+</html>

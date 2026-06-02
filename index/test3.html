@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>QBay 回答ページ</title>
+  <link rel="stylesheet" href="../assets/css/style2.css">
+  <style>
+    /* 行ホバー時のハイライト */
+    #post-table tbody tr:hover {
+      background-color: #ffd8aa;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>
+    <div class="header-area">
+      <a href="../index.html">
+        <img src="../assets/images/title.png" alt="title" class="qbay-logo">
+      </a>
+    </div>
+  </h1>
+
+  <p class="large-text">回答</p>
+
+  <div class="search-area">
+    <label>検索: <input type="text" id="search-input"></label>
+    <label>カテゴリ:
+      <select id="category-select">
+        <option value="">すべて</option>
+      </select>
+    </label>
+  </div>
+
+  <table id="post-table">
+    <thead>
+      <tr>
+        <th>内容</th>
+        <th>名前</th>
+        <th>カテゴリ</th>
+        <th>回答方式</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const tbody = document.querySelector("#post-table tbody");
+    const searchInput = document.getElementById("search-input");
+    const categorySelect = document.getElementById("category-select");
+
+    // データ取得
+    fetch("/php/test3.php")
+      .then(res => res.json())
+      .then(posts => {
+        console.log("取得したデータ:", posts);
+
+        // カテゴリ一覧を動的に追加
+        const categories = [...new Set(posts.map(p => p.category).filter(Boolean))];
+        categories.forEach(cat => {
+          const option = document.createElement("option");
+          option.value = cat;
+          option.textContent = cat;
+          categorySelect.appendChild(option);
+        });
+
+        // 投稿描画関数
+        function renderPosts(filteredPosts) {
+          tbody.innerHTML = "";
+          filteredPosts.forEach(post => {
+            const type = post.mode === "select" ? "選択肢式" : "コメント式";
+            const content = post.comment || "";
+
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+              <td>${content}</td>
+              <td>${post.name}</td>
+              <td>${post.category}</td>
+              <td>${type}</td>
+            `;
+            tr.dataset.id = post.id;
+            tr.addEventListener("click", () => {
+              window.location.href = `ans.html?id=${post.id}`;
+            });
+            tbody.appendChild(tr);
+          });
+        }
+
+        // ✅ 初期表示（最新20件をそのまま表示）
+        renderPosts(posts.slice(0, 20));
+
+        // 絞り込み処理
+        function filterPosts() {
+          const keyword = searchInput.value.trim();
+          const selectedCategory = categorySelect.value;
+
+          const filtered = posts.filter(post => {
+            const matchKeyword =
+              keyword === "" ||
+              (post.comment && post.comment.includes(keyword)) ||
+              (post.name && post.name.includes(keyword));
+
+            const matchCategory =
+              selectedCategory === "" || post.category === selectedCategory;
+
+            return matchKeyword && matchCategory;
+          });
+
+          // ✅ 絞り込み結果も新しい順のまま表示
+          renderPosts(filtered.slice(0, 20));
+        }
+
+        // イベントリスナー
+        searchInput.addEventListener("input", filterPosts);
+        categorySelect.addEventListener("change", filterPosts);
+      })
+      .catch(err => {
+        console.error("データ取得エラー:", err);
+        tbody.innerHTML = "<tr><td colspan='4'>データを取得できませんでした</td></tr>";
+      });
+  });
+  </script>
+</body>
+</html>

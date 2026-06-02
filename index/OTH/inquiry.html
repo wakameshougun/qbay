@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>QBay | 通報フォーム</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../assets/css/style2.css">
+</head>
+<body>
+  <header>
+    <a href="../../index.html">
+      <img src="../../assets/images/title.png" alt="QBay ホーム" style="width: 120px;">
+    </a>
+  </header>
+
+  <main class="container">
+    <h1>問い合わせフォーム</h1>
+    <p>ご協力ありがとうございます。みんなが安心して使える掲示板を一緒につくっていきましょう。</p>
+
+    <form id="reportForm">
+      <label for="post-id">投稿IDまたはURL（任意）:</label><br>
+      <input type="text" id="post-id" name="post-id"><br><br>
+
+      <label for="email">メールアドレス（任意）:</label><br>
+      <input type="email" id="email" name="email"><br><br>
+
+      <label for="details">内容:</label><br>
+      <textarea id="details" name="details" rows="5" cols="40" required></textarea><br><br>
+
+      <button type="submit">お知らせする</button>
+    </form>
+
+    <p id="thanksMessage" style="display:none; margin-top:20px;">
+      ご協力ありがとうございます。内容を保存しました。
+    </p>
+  </main>
+
+  <footer class="container" aria-label="フッター">
+    <nav aria-label="補助ナビゲーション">
+      <ul>
+        <li><a href="terms.html">利用規約</a></li>
+        <li><a href="policy.html">プライバシーポリシー</a></li>
+        <li><a href="report.html">通報フォーム</a></li>
+      </ul>
+    </nav>
+  <p>© QBay</p>
+  </footer>
+
+  <script>
+    document.getElementById("reportForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(document.getElementById("reportForm"));
+
+      try {
+        // ✅ 絶対パスに修正
+        const res = await fetch("/php/inquiry.php", {
+          method: "POST",
+          body: formData
+        });
+
+        // JSONとしてパース
+        const result = await res.json();
+
+        if (result.success) {
+          document.getElementById("reportForm").reset();
+          document.getElementById("thanksMessage").style.display = "block";
+        } else {
+          alert("保存に失敗しました: " + (result.error || ""));
+        }
+      } catch (err) {
+        alert("通信エラー: " + err.message);
+      }
+    });
+  </script>
+</body>
+</html>
