@@ -1,0 +1,57 @@
+@charset "UTF-8";
+/**/
+body { background-color: #ffe0b6; }
+button {
+  width: 10em;
+  height: 3em;
+  font-size: 1.5em;}
+.large-text {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.post {
+  background: #fff8e1;
+  border: 1px solid #ccc;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-radius: 8px;
+}
+#dev-login input[type="password"] {
+  background: transparent;
+  border: none;
+  border-bottom: 1px dotted #ccc;
+  color: #ccc;
+  font-size: 0.9em;
+  width: 150px;
+}
+#dev-login input[type="password"] {
+  font-size: 0.8em;
+  border: none;
+  background: none;
+  color: #888;
+  text-decoration: underline dotted;
+  width: 100px;
+}
+#dev-login {
+  font-size: 0.8em;
+  opacity: 0.5;
+  margin-top: 1em;
+}
+#dev-box {
+  margin-top: 2em;
+}
+
+#dev-box input[type="password"] {
+  font-size: 1em;
+  padding: 0.5em;
+  width: 160px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  color: #333;
+}
+#dev-password {
+  width: 40px; 
+  height: 12px; 
+  font-size: 10px;
+}
+

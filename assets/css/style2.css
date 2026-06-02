@@ -1,0 +1,155 @@
+@charset "UTF-8";
+
+/* 全体の背景とフォント */
+body {
+  background-color: #ffe0b6;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+/* ロゴ画像の統一サイズ */
+.qbay-logo {
+  width: 150px;
+  height: auto;
+  vertical-align: middle;
+}
+
+/* ヘッダーエリア */
+.header-area {
+  margin-bottom: 20px;
+}
+
+/* 見出しテキスト */
+.large-text {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+/* 投稿情報の表示エリア */
+.post-info {
+  background-color: #fff2dc;
+  border: 1px solid #e0c8aa;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+/* 回答UIエリア */
+.answer-container {
+  background-color: #ffe8c6;
+  border: 1px solid #e0c8aa;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+/* テキストエリアのスタイル */
+textarea#text-answer {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  background-color: #fff;
+}
+
+/* ラジオボタンのラベル */
+.answer-container label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1em;
+  color: #333;
+}
+
+/* 送信ボタン */
+.button-area {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#submit-btn {
+  background-color: #f2d2a9;
+  color: #333;
+  font-size: 1em;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#submit-btn:hover {
+  background-color: #e6c29c;
+}
+
+/* テーブルスタイル（test3用） */
+#post-table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #ffe8c6;
+  table-layout: fixed;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+#post-table th {
+  background-color: #f2d2a9;
+  color: #333;
+  font-weight: bold;
+  padding: 10px;
+  border: 1px solid #e0c8aa;
+  text-align: left;
+}
+
+#post-table td {
+  border: 1px solid #e0c8aa;
+  padding: 10px;
+  vertical-align: top;
+  font-size: 0.95em;
+  color: #333;
+  background-color: #ffe8c6;
+  word-wrap: break-word;
+}
+
+/* 偶数・奇数行の背景色 */
+#post-table tbody tr:nth-child(even) td {
+  background-color: #ffe0b6;
+}
+#post-table tbody tr:nth-child(odd) td {
+  background-color: #ffd8a4
+;
+}
+
+/* ホバー時の強調 */
+#post-table tbody tr:hover td {
+  background-color: #ffbf77
+;
+}
+/* 名前・カテゴリ・コメントの白背景を削除 */
+.name,
+.category,
+.comment {
+  background-color: transparent !important;
+  border: none;
+  box-shadow: none;
+}
+
+
+/* 検索・カテゴリエリア（test.html用） */
+.search-area {
+  margin-bottom: 30px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.search-area label {
+  margin-bottom: 0;
+  font-size: 1em;
+  color: #222;
+}
